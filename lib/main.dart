@@ -13,12 +13,44 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => _MyAppState();
 }
 
+
+
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
+    Future dialogShow(){
+      return showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: const Text('Notifications'),
+              content: SingleChildScrollView(
+                child: ListView(
+                  children: const [
+                    Text(
+                        'Do you want to recieve Notifications from us'),
+                  ],
+                ),
+              ),
+              actions: [
+                TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Text('Yes')),
+                TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Text('No')),
+              ],
+            );
+          });
+    }
     double screenWidth = MediaQuery.of(context).size.width;
-    return SafeArea(child:
-    MaterialApp(
+    var bellColor = Colors.black;
+    return SafeArea(
+        child: MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: green,
@@ -28,14 +60,22 @@ class _MyAppState extends State<MyApp> {
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: screenWidth < 500 ? const Center(child:  Text('Home')): const Text('Home'),
+          title: screenWidth < 500
+              ? const Center(child: Text('Home'))
+              : const Text('Home'),
           actions: [
-            IconButton(onPressed: (){}, icon: const Icon(Icons.notifications,color: colorBlack,))
+            IconButton(
+                onPressed: dialogShow,
+                icon: Icon(
+                  Icons.notifications,
+                  color: bellColor,
+                ))
           ],
         ),
-        body:  HomePage(screenWidth: screenWidth,),
+        body: HomePage(
+          screenWidth: screenWidth,
+        ),
       ),
     ));
-
   }
 }

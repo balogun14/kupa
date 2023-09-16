@@ -30,7 +30,7 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: screenWidth < 500 ? const Center(child:  Text('Home')): const Text('Home'),
           actions: [
-            IconButton(onPressed: (){}, icon: const Icon(Icons.add_alert_rounded,color: colorBlack,))
+            IconButton(onPressed: (){}, icon: const Icon(Icons.notifications,color: colorBlack,))
           ],
         ),
         body:  HomePage(screenWidth: screenWidth,),

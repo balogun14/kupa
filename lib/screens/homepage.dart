@@ -51,7 +51,7 @@ class _HomePageState extends State<HomePage> {
                 )
               : const Center(
                   child: SearchBar(
-                    hintText: 'Semovita',
+                    hintText: 'Semovita...',
                     leading: Padding(
                       padding: EdgeInsets.only(left: 8.0),
                       child: Icon(Icons.search),

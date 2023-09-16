@@ -2,14 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:kupa/utils/constants.dart';
 import 'package:kupa/widgets/space.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   final double screenWidth;
   const HomePage({super.key, required this.screenWidth});
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
   Widget build(BuildContext context) {
     double spaceHeight = 20.0;
     var padding = EdgeInsets.symmetric(horizontal: spaceHeight);
+    var boxWidth =100.0;
     final List<BoxShadow> boxShadow = [
       const BoxShadow(
         color: sage,
@@ -34,7 +40,7 @@ class HomePage extends StatelessWidget {
         VerticalSpacing(height: spaceHeight),
         Padding(
           padding: padding,
-          child: screenWidth < 500
+          child: widget.screenWidth < 500
               ? const SearchBar(
                   hintText: 'Semovita',
                   leading: Padding(
@@ -103,7 +109,7 @@ class HomePage extends StatelessWidget {
                 Padding(
                   padding: padding,
                   child: Container(
-                    width: 100,
+                    width: boxWidth,
                     height: 30,
                     decoration: BoxDecoration(
                         color: colorWhite,
